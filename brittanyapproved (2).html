@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Brittany's Seal of Approval — Notary Public</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8953F;
+    --gold-light: #D4AF6A;
+    --gold-dark: #8A6E2A;
+    --ink: #1A1714;
+    --cream: #FAF8F3;
+    --warm-gray: #6B6560;
+    --border: rgba(184,149,63,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--ink);
+    color: var(--cream);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(26,23,20,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+  .nav-book {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    border: 0.5px solid var(--gold);
+    color: var(--gold-light);
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-book:hover { background: var(--gold); color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(184,149,63,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-ornament {
+    width: 80px; height: 1px; background: var(--gold);
+    margin: 0 auto 2.5rem;
+    position: relative;
+  }
+  .hero-ornament::before, .hero-ornament::after {
+    content: '◆';
+    position: absolute; top: 50%; transform: translateY(-50%);
+    font-size: 6px; color: var(--gold);
+  }
+  .hero-ornament::before { left: -12px; }
+  .hero-ornament::after { right: -12px; }
+  .hero-sup {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: rgba(250,248,243,0.55);
+    margin: 1.5rem 0 3rem;
+    font-weight: 300;
+  }
+  .hero-cta-row { display: flex; gap: 1.25rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    padding: 0.85rem 2.4rem;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-ghost {
+    display: inline-block;
+    padding: 0.85rem 2.4rem;
+    border: 0.5px solid rgba(250,248,243,0.3);
+    color: rgba(250,248,243,0.7);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* SEAL BADGE */
+  .seal-wrap {
+    margin: 3.5rem auto 0;
+    opacity: 0.18;
+  }
+
+  /* DIVIDER */
+  .divider {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0 4rem; margin: 0 auto;
+    max-width: 900px;
+  }
+  .divider-line { flex: 1; height: 0.5px; background: var(--border); }
+  .divider-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1060px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+    margin-top: 4rem;
+  }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(250,248,243,0.65);
+    margin-bottom: 1.5rem;
+  }
+  .about-credentials {
+    border-left: 1px solid var(--border);
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .credential-item {}
+  .credential-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .credential-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    margin-top: 4rem;
+    border: 0.5px solid var(--border);
+  }
+  .service-card {
+    padding: 2.5rem 2rem;
+    border: 0.5px solid var(--border);
+    position: relative;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card:hover { background: rgba(184,149,63,0.04); }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(184,149,63,0.15);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+  .service-desc {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    color: rgba(250,248,243,0.5);
+  }
+  .service-tag {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.25rem 0.75rem;
+    border: 0.5px solid var(--border);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* PROCESS */
+  .process-bg { background: rgba(184,149,63,0.03); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+  }
+  .step {
+    padding: 2rem 1.5rem;
+    border-right: 0.5px solid var(--border);
+    text-align: center;
+  }
+  .step:last-child { border-right: none; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    opacity: 0.5;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .step-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+  .step-desc { font-size: 0.82rem; color: rgba(250,248,243,0.45); line-height: 1.7; }
+
+  /* CTA SECTION */
+  .cta-section {
+    text-align: center;
+    padding: 7rem 2rem;
+  }
+  .cta-section .section-title { margin: 1rem 0 1.5rem; }
+  .cta-sub {
+    font-size: 0.9rem;
+    color: rgba(250,248,243,0.45);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(250,248,243,0.3);
+    letter-spacing: 0.08em;
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.72rem;
+    color: rgba(250,248,243,0.35);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  @media (max-width: 760px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .step { border-right: none; border-bottom: 0.5px solid var(--border); }
+    footer { flex-direction: column; text-align: center; padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Brittany's Seal of Approval</span>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#book" class="nav-book">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament"></div>
+  <p class="hero-sup">Certified Notary Public &nbsp;·&nbsp; Des Moines, Iowa</p>
+  <h1>Brittany's<br/><em>Seal of Approval</em></h1>
+  <p class="hero-tagline">Professional notary services — delivered with precision and care.</p>
+  <div class="hero-cta-row">
+    <a href="#book" class="btn-primary">Schedule an Appointment</a>
+    <a href="#services" class="btn-ghost">View Services</a>
+  </div>
+  <div class="seal-wrap">
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="54" stroke="#B8953F" stroke-width="1"/>
+      <circle cx="60" cy="60" r="46" stroke="#B8953F" stroke-width="0.5"/>
+      <polygon points="60,10 63.5,50 60,55 56.5,50" fill="#B8953F" opacity="0.6"/>
+      <polygon points="60,110 63.5,70 60,65 56.5,70" fill="#B8953F" opacity="0.6"/>
+      <polygon points="10,60 50,56.5 55,60 50,63.5" fill="#B8953F" opacity="0.6"/>
+      <polygon points="110,60 70,56.5 65,60 70,63.5" fill="#B8953F" opacity="0.6"/>
+      <polygon points="21.7,21.7 52,50.5 55,55 50.5,52" fill="#B8953F" opacity="0.4"/>
+      <polygon points="98.3,98.3 68,69.5 65,65 69.5,68" fill="#B8953F" opacity="0.4"/>
+      <polygon points="21.7,98.3 52,69.5 55,65 50.5,68" fill="#B8953F" opacity="0.4"/>
+      <polygon points="98.3,21.7 68,50.5 65,55 69.5,52" fill="#B8953F" opacity="0.4"/>
+      <text x="60" y="56" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" letter-spacing="3" fill="#B8953F" font-style="italic">NOTARY</text>
+      <text x="60" y="68" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="9" letter-spacing="3" fill="#B8953F" font-style="italic">PUBLIC</text>
+    </svg>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <span class="divider-text">Trusted · Certified · Available</span>
+  <div class="divider-line"></div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">What I offer</p>
+    <h2 class="section-title">Notary services<br/>done <em>right</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-name">General Notarizations</div>
+        <p class="service-desc">Affidavits, sworn statements, acknowledgments, jurats, and all standard document notarizations handled efficiently and accurately.</p>
+        <span class="service-tag">Most Common</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-name">Loan Signings &amp; Real Estate</div>
+        <p class="service-desc">Certified signing agent for mortgage closings, refinances, deeds of trust, and all real estate transaction documents.</p>
+        <span class="service-tag">Signing Agent</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-name">Mobile &amp; Traveling Notary</div>
+        <p class="service-desc">I come to you — home, office, hospital, or any location in the Des Moines area. Flexible scheduling including evenings and weekends.</p>
+        <span class="service-tag">We Come to You</span>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-name">Apostille Services</div>
+        <p class="service-desc">Document authentication for international use. I'll guide you through the apostille process so your paperwork is accepted abroad.</p>
+        <span class="service-tag">International Docs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">About Brittany</p>
+        <h2 class="section-title">A notary you<br/>can <em>count on</em></h2>
+        <div class="about-text" style="margin-top:2rem;">
+          <p>I'm Brittany, a commissioned notary public serving the greater Des Moines area with professionalism, integrity, and discretion. Whether you need a quick signature notarized or a full loan package handled, I bring the same care to every appointment.</p>
+          <p>As a mobile notary, I understand that your time is valuable — so I work around your schedule, not the other way around.</p>
+        </div>
+        <a href="#book" class="btn-primary" style="margin-top:1.5rem; display:inline-block;">Book Your Appointment</a>
+      </div>
+      <div class="about-credentials">
+        <div class="credential-item">
+          <div class="credential-title">Commissioned In</div>
+          <div class="credential-value">State of Iowa</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Service Area</div>
+          <div class="credential-value">Greater Des Moines &amp; Surrounding Counties</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Availability</div>
+          <div class="credential-value">7 Days a Week · Flexible Hours</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Also Serving</div>
+          <div class="credential-value">Remote Online Notarization (RON)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process" class="process-bg">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">The process</p>
+    <h2 class="section-title" style="text-align:center;">Simple from start<br/>to <em>seal</em></h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-name">Book Online</div>
+        <p class="step-desc">Select your service, choose a date and time, and confirm your location.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-name">Prepare Your Docs</div>
+        <p class="step-desc">Gather your documents. I'll send you a checklist in advance so you're ready.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-name">We Meet</div>
+        <p class="step-desc">At your location or a convenient spot — I arrive on time, every time.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-name">Signed &amp; Sealed</div>
+        <p class="step-desc">Documents notarized, stamped, and ready to use. Simple as that.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK CTA -->
+<section id="book" class="cta-section">
+  <div class="container">
+    <div class="divider-text" style="font-family:'Cormorant Garamond',serif; font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold);">Ready to get started?</div>
+    <h2 class="section-title" style="margin:1rem auto 1.5rem; max-width:600px;">Schedule your<br/><em>appointment today</em></h2>
+    <p class="cta-sub">Available 7 days a week across the Des Moines metro area.<br/>Fast, professional, and always on time.</p>
+    <a href="YOUR_BOOKING_LINK_HERE" class="btn-primary" style="font-size:0.75rem; padding:1rem 3rem;">Book Your Appointment →</a>
+    <p style="margin-top:1.5rem; font-size:0.8rem; color:rgba(250,248,243,0.3); letter-spacing:0.05em;">brittanyapproved.com</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:5rem 2rem; border-top:0.5px solid var(--border);">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">Get in touch</p>
+    <h2 class="section-title" style="text-align:center; margin-bottom:3.5rem;">Reach out <em>anytime</em></h2>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; max-width:700px; margin:0 auto; border:0.5px solid var(--border);">
+      <div style="padding:2.5rem 2rem; border:0.5px solid var(--border); text-align:center;">
+        <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Call or Text</div>
+        <a href="tel:5155180807" style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--cream); text-decoration:none; font-weight:400; display:block; margin-bottom:0.5rem; transition:color 0.2s;">515-518-0807</a>
+        <p style="font-size:0.75rem; color:rgba(250,248,243,0.35); letter-spacing:0.08em;">Calls &amp; texts welcome</p>
+      </div>
+      <div style="padding:2.5rem 2rem; border:0.5px solid var(--border); text-align:center;">
+        <div style="font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Email</div>
+        <a href="mailto:thenotarybritt@brittanyapproved.com" style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--cream); text-decoration:none; font-weight:400; display:block; margin-bottom:0.5rem; transition:color 0.2s; word-break:break-all;">thenotarybritt@brittanyapproved.com</a>
+        <p style="font-size:0.75rem; color:rgba(250,248,243,0.35); letter-spacing:0.08em;">Usually responds same day</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Brittany's Seal of Approval</span>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#process">How It Works</a>
+    <a href="#contact">Contact</a>
+    <a href="#book">Book</a>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.3rem;">
+    <a href="tel:5155180807" style="font-size:0.72rem; color:rgba(250,248,243,0.4); text-decoration:none; letter-spacing:0.08em; transition:color 0.2s;">515-518-0807</a>
+    <a href="mailto:thenotarybritt@brittanyapproved.com" style="font-size:0.72rem; color:rgba(250,248,243,0.4); text-decoration:none; letter-spacing:0.05em; transition:color 0.2s;">thenotarybritt@brittanyapproved.com</a>
+    <span class="footer-copy" style="margin-top:0.2rem;">© 2026 Brittany's Seal of Approval · Des Moines, Iowa</span>
+  </div>
+</footer>
+
+</body>
+</html>
